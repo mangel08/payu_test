@@ -17,37 +17,19 @@
   <input name="buyerEmail"    type="hidden"  value="${buyer_email}" >
   <input name="responseUrl"    type="hidden"  value="${response_url}" >
   <input name="confirmationUrl"    type="hidden"  value="${confirmation_url}" >
-  <!-- <input name="Submit" type="submit"  value="Enviar" > -->
   <input type="submit" value="{'Paga Ahora'|t}" id="pay_btn" />
 
 </form>
 
-merchantId  
-accountId 
-description 
-referenceCode 
-amount
-tax  
-taxReturnBase 
-currency 
-signature 
-buyerFullName 
-buyerEmail
-
 
 {literal}
 <script type="text/javascript">
-document.getElementById("pay_btn").style.display = "none";
-document.getElementById("ps_notice").style.display = "block";
+  document.getElementById("pay_btn").style.display = "none";
+  document.getElementById("ps_notice").style.display = "block";
 
-window.onload = function() {
-    document.getElementById("ps_form").submit();
-}
+  window.onload = function() {
+      document.getElementById("ps_form").submit();
+  }
 </script>
 {/literal}
-
-<!-- 508029 merchantId
-pRRXKOl8ikMmt9u ApiLogin
-4Vj8eK4rloUd272L48hsrarnUA Api Key
-512321 account id -->
 
