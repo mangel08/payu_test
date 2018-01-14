@@ -1,28 +1,50 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>PayU</title>
-</head>
-<body>
-  <form method="post" action="https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/">
-  <input name="merchantId"    type="hidden"  value="508029"   >
-  <input name="accountId"     type="hidden"  value="512321" >
-  <input name="description"   type="hidden"  value="Test PAYU"  >
-  <input name="referenceCode" type="hidden"  value="integrationTest1" >
-  <input name="amount"        type="hidden"  value="100"   >
+<div id="ps_notice" style="display: block;" class="payment_redirect_message">
+    {'Redirecting to %s payment system'|t:'PayU'}.
+</div>
+
+  <form accept-charset="UTF-8" action="{$form_url}" method="post" id="ps_form">
+  <input name="merchantId"    type="hidden"  value={$merchant_id}   >
+  <input name="accountId"     type="hidden"  value="{account_id}" >
+  <input name="description"   type="hidden"  value="{$description}"  >
+  <input name="referenceCode" type="hidden"  value="${reference_code}" >
+  <input name="amount"        type="hidden"  value="${amount}"   >
   <input name="tax"           type="hidden"  value="0"  >
   <input name="taxReturnBase" type="hidden"  value="0" >
-  <input name="currency"      type="hidden"  value="USD" >
-  <input name="signature"     type="hidden"  value="fbff651b85aad19adf256c35197fe7ad">
-  <input name="test"          type="hidden"  value="1" >
-  <input name="buyerEmail"    type="hidden"  value="test@test.com" >
-  <input name="responseUrl"    type="hidden"  value="http://www.test.com/response" >
-  <input name="confirmationUrl"    type="hidden"  value="http://www.test.com/confirmation" >
-  <input name="Submit" type="submit"  value="Enviar" >
+  <input name="currency"      type="hidden"  value="${currency}" >
+  <input name="signature"     type="hidden"  value="${signature}">
+  <input name="test"          type="hidden"  value="0" >
+  <input name="buyerFullName" type="hidden"  value="${buyer_fullname}" >
+  <input name="buyerEmail"    type="hidden"  value="${buyer_email}" >
+  <input name="responseUrl"    type="hidden"  value="${response_url}" >
+  <input name="confirmationUrl"    type="hidden"  value="${confirmation_url}" >
+  <!-- <input name="Submit" type="submit"  value="Enviar" > -->
+  <input type="submit" value="{'Paga Ahora'|t}" id="pay_btn" />
+
 </form>
-</body>
-</html>
+
+merchantId  
+accountId 
+description 
+referenceCode 
+amount
+tax  
+taxReturnBase 
+currency 
+signature 
+buyerFullName 
+buyerEmail
+
+
+{literal}
+<script type="text/javascript">
+document.getElementById("pay_btn").style.display = "none";
+document.getElementById("ps_notice").style.display = "block";
+
+window.onload = function() {
+    document.getElementById("ps_form").submit();
+}
+</script>
+{/literal}
 
 <!-- 508029 merchantId
 pRRXKOl8ikMmt9u ApiLogin
